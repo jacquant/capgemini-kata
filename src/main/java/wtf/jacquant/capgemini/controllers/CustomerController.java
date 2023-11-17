@@ -22,12 +22,12 @@ public class CustomerController {
     }
 
     @PostMapping("/")
-    public CustomerDto createCustomer(@RequestBody @Valid CreateCustomerRequest createCustomerRequest) {
+    public CustomerDto createCustomer(@RequestBody @Valid final CreateCustomerRequest createCustomerRequest) {
         return customerService.createCustomer(createCustomerRequest.getFirstName(), createCustomerRequest.getLastName());
     }
 
     @PostMapping("/{id}/accounts")
-    public AccountDto createAccount(@PathVariable final Long id, @RequestBody @Valid AccountCreateRequest accountCreateRequest) {
+    public AccountDto createAccount(@PathVariable final Long id, @RequestBody @Valid final AccountCreateRequest accountCreateRequest) {
         if (!id.equals(accountCreateRequest.getCustomerId())) {
             throw new IllegalArgumentException("customerId in path and body must be the same");
         }
