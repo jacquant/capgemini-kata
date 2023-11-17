@@ -22,7 +22,6 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
     private final CustomerMapper customerMapper;
     private final AccountMapper accountMapper;
-
     private final AccountService accountService;
 
     public CustomerDto getCustomer(final Long customerId) {
