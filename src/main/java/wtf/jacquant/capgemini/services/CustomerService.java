@@ -7,12 +7,14 @@ import wtf.jacquant.capgemini.domains.Account;
 import wtf.jacquant.capgemini.domains.Customer;
 import wtf.jacquant.capgemini.dtos.AccountDto;
 import wtf.jacquant.capgemini.dtos.CustomerDto;
+import wtf.jacquant.capgemini.dtos.CustomerInfoDto;
 import wtf.jacquant.capgemini.exceptions.CustomerNotFoundException;
 import wtf.jacquant.capgemini.mappers.AccountMapper;
 import wtf.jacquant.capgemini.mappers.CustomerMapper;
 import wtf.jacquant.capgemini.repositories.CustomerRepository;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +28,10 @@ public class CustomerService {
 
     public CustomerDto getCustomer(final Long customerId) {
         return customerMapper.toDto(getCustomerById(customerId));
+    }
+
+    public List<CustomerInfoDto> listCustomers() {
+        return customerMapper.toInfoDto(customerRepository.findAll());
     }
 
     private Customer getCustomerById(final Long customerId) {

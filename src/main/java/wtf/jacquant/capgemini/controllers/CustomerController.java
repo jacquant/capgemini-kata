@@ -7,7 +7,10 @@ import wtf.jacquant.capgemini.controllers.json.request.AccountCreateRequest;
 import wtf.jacquant.capgemini.controllers.json.request.CreateCustomerRequest;
 import wtf.jacquant.capgemini.dtos.AccountDto;
 import wtf.jacquant.capgemini.dtos.CustomerDto;
+import wtf.jacquant.capgemini.dtos.CustomerInfoDto;
 import wtf.jacquant.capgemini.services.CustomerService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/customers")
@@ -15,6 +18,11 @@ import wtf.jacquant.capgemini.services.CustomerService;
 public class CustomerController {
 
     private final CustomerService customerService;
+
+    @GetMapping("/")
+    public List<CustomerInfoDto> getCustomers() {
+        return customerService.listCustomers();
+    }
 
     @GetMapping("/{id}")
     public CustomerDto getCustomer(@PathVariable final Long id) {

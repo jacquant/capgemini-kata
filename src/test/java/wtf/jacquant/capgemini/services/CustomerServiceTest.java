@@ -12,11 +12,13 @@ import wtf.jacquant.capgemini.domains.Account;
 import wtf.jacquant.capgemini.domains.Customer;
 import wtf.jacquant.capgemini.dtos.AccountDto;
 import wtf.jacquant.capgemini.dtos.CustomerDto;
+import wtf.jacquant.capgemini.dtos.CustomerInfoDto;
 import wtf.jacquant.capgemini.mappers.AccountMapper;
 import wtf.jacquant.capgemini.mappers.CustomerMapper;
 import wtf.jacquant.capgemini.repositories.CustomerRepository;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -43,6 +45,26 @@ public class CustomerServiceTest {
     @BeforeEach
     void setUp() {
         customerService = new CustomerService(customerRepository, customerMapper, accountMapper, accountService);
+    }
+
+    @Test
+    void testListCustomers() {
+        // Arrange
+        Customer customer1 = new Customer();
+        customer1.setId(1L);
+        Customer customer2 = new Customer();
+        customer2.setId(2L);
+        when(customerRepository.findAll()).thenReturn(java.util.List.of(customer1, customer2));
+
+        // Act
+        List<CustomerInfoDto> result = customerService.listCustomers();
+
+        // Assert
+        assertNotNull(result);
+        assertEquals(2, result.size());
+        assertEquals(1L, result.get(0).getId());
+        assertEquals(2L, result.get(1).getId());
+        verify(customerRepository, times(1)).findAll();
     }
 
     @Test
