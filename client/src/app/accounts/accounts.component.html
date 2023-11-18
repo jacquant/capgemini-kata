@@ -1,0 +1,13 @@
+@if (selectedCustomer()) {
+<div style="display: flex; align-items: center; justify-content: center;">
+<button mat-raised-button color="primary" (click)="addAccount()">Create a new Account</button>
+</div>
+<app-account-table [accounts]="accounts()" [selectedAccountId]="selectedAccountId()"
+(selectAccountId)="selectAccount($event)">
+</app-account-table>
+
+@if(selectedAccountId()) {
+<app-transaction-table [transactions]="transactions()"></app-transaction-table>
+}
+  }
+

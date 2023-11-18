@@ -1,0 +1,28 @@
+<table [dataSource]="transactions" mat-table>
+  <ng-container matColumnDef="id">
+    <th *matHeaderCellDef mat-header-cell> ID</th>
+    <td *matCellDef="let element" mat-cell> {{element.id}} </td>
+  </ng-container>
+  <ng-container matColumnDef="sourceId">
+    <th *matHeaderCellDef mat-header-cell> Source Account ID</th>
+    <td *matCellDef="let element" mat-cell> {{element.sourceId}} </td>
+  </ng-container>
+  <ng-container matColumnDef="targetId">
+    <th *matHeaderCellDef mat-header-cell> Target Account ID</th>
+    <td *matCellDef="let element" mat-cell> {{element.targetId}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="amount">
+    <th *matHeaderCellDef mat-header-cell> Amount</th>
+    <td *matCellDef="let element" mat-cell> {{element.amount}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="createdDate">
+    <th *matHeaderCellDef mat-header-cell> Date time</th>
+    <td *matCellDef="let element" mat-cell> {{element.createdDate}} </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr *matRowDef="let row; columns: displayedColumns;"
+      mat-row></tr>
+</table>

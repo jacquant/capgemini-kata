@@ -1,0 +1,16 @@
+<table [dataSource]="accounts" mat-table>
+  <ng-container matColumnDef="id">
+    <th *matHeaderCellDef mat-header-cell> ID</th>
+    <td *matCellDef="let element" mat-cell> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="amount">
+    <th *matHeaderCellDef mat-header-cell> Balance</th>
+    <td *matCellDef="let element" mat-cell> {{element.amount}} </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr (click)="selectAccountId.emit(row.id);" *matRowDef="let row; columns: displayedColumns;"
+      [class.account-element-selected-row]="selectedAccountId === row.id"
+      class="account-element-row" mat-row></tr>
+</table>

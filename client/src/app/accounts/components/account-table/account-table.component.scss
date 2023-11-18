@@ -1,0 +1,7 @@
+tr.account-element-row:not(account-element-selected-row) hover {
+  background: whitesmoke;
+}
+
+tr.account-element-selected-row {
+  background: #6677bb;
+}

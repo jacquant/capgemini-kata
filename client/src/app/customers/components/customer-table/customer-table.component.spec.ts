@@ -8,10 +8,9 @@ describe('CustomerTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CustomerTableComponent]
-    })
-    .compileComponents();
-    
+      imports: [CustomerTableComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(CustomerTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

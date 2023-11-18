@@ -1,0 +1,6 @@
+<div style="display: flex; align-items: center; justify-content: center;">
+  <button (click)="addCustomer()" color="primary" mat-raised-button>Create a new Customer</button>
+</div>
+<app-customer-table (selectedCustomerId)="selectCustomer($event)" [customers]="customers()"
+                    [selectedCustomer]="selectedCustomer()">
+</app-customer-table>

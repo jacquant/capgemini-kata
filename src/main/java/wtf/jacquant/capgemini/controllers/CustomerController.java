@@ -13,13 +13,13 @@ import wtf.jacquant.capgemini.services.CustomerService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/api/v1/customers")
 @RequiredArgsConstructor
 public class CustomerController {
 
     private final CustomerService customerService;
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<CustomerInfoDto> getCustomers() {
         return customerService.listCustomers();
     }
@@ -29,7 +29,7 @@ public class CustomerController {
         return customerService.getCustomer(id);
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public CustomerDto createCustomer(@RequestBody @Valid final CreateCustomerRequest createCustomerRequest) {
         return customerService.createCustomer(createCustomerRequest.getFirstName(), createCustomerRequest.getLastName());
     }

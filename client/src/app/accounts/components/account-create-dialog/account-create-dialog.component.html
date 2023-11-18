@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Create a new Account</h2>
+<span></span>
+<div class="mat-typography" mat-dialog-content>
+  <p>
+    <mat-form-field>
+      <mat-label>Initial amount</mat-label>
+      <input [(ngModel)]="amount" matInput type="number">
+    </mat-form-field>
+  </p>
+</div>
+<div align="end" mat-dialog-actions>
+  <button (click)="onNoClick()" mat-button>Cancel</button>
+  <button [mat-dialog-close]="{amount: amount}" cdkFocusInitial mat-button>Save</button>
+</div>

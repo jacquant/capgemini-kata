@@ -1,0 +1,7 @@
+tr.customer-element-row:not(customer-element-selected-row) hover {
+  background: whitesmoke;
+}
+
+tr.customer-element-selected-row {
+  background: #9977bb;
+}

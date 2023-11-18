@@ -1,0 +1,21 @@
+<table [dataSource]="customers" mat-table>
+  <ng-container matColumnDef="id">
+    <th *matHeaderCellDef mat-header-cell> ID</th>
+    <td *matCellDef="let element" mat-cell> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="firstName">
+    <th *matHeaderCellDef mat-header-cell> First Name</th>
+    <td *matCellDef="let element" mat-cell> {{element.firstName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="lastName">
+    <th *matHeaderCellDef mat-header-cell> Last Name</th>
+    <td *matCellDef="let element" mat-cell> {{element.lastName}} </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr (click)="selectedCustomerId.emit(row.id);" *matRowDef="let row; columns: displayedColumns;"
+      [class.customer-element-selected-row]="selectedCustomer?.id === row.id"
+      class="customer-element-row" mat-row></tr>
+</table>
