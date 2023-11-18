@@ -20,10 +20,10 @@ public class Account {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, precision = 5, scale = 3)
     private BigDecimal amount;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
@@ -56,7 +56,7 @@ public class Account {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Account )) return false;
+        if (!(o instanceof Account)) return false;
         return id != null && id.equals(((Account) o).getId());
     }
 

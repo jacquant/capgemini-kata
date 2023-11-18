@@ -26,7 +26,7 @@ public class Transaction {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne(fetch =  FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "target_id")
     private Account target;
 
@@ -34,7 +34,7 @@ public class Transaction {
     @JoinColumn(name = "source_id")
     private Account source;
 
-    @Column(name = "amount", nullable = false)
+    @Column(name = "amount", nullable = false, precision = 5, scale = 3)
     private BigDecimal amount;
 
     @CreatedDate
@@ -48,7 +48,7 @@ public class Transaction {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Transaction )) return false;
+        if (!(o instanceof Transaction)) return false;
         return id != null && id.equals(((Transaction) o).getId());
     }
 
