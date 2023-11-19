@@ -72,3 +72,19 @@ jobs:
 
       - name: Execute Gradle build
         run: ./gradlew build
+
+      - run: |
+          mkdir -p build/dependency && (cd build/dependency; jar -xf ../libs/*-SNAPSHOT.jar)
+      - run: |
+          echo "IMAGE_NAME_WITH_REGISTRY=$DOCKER_REGISTRY/${IMAGE_NAME,,}" >> $GITHUB_ENV
+          export IMAGE_NAME_WITH_REGISTRY=$DOCKER_REGISTRY/${IMAGE_NAME,,}
+          echo "FULL_IMAGE_NAME=$IMAGE_NAME_WITH_REGISTRY:$GITHUB_SHA-gitsha" >> $GITHUB_ENV
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.DOCKER_REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and Push Release to DockerHub
+        shell: bash
+        run: ./build_and_push.sh
