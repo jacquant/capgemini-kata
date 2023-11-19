@@ -49,3 +49,31 @@ and run it:
 ```shell
 docker run -p 8080:8080 ghcr.io/jacquant/capgemini-kata/capgemini:latest
 ```
+
+The application will be available at `http://localhost:8080`. By accessing this endpoint, you will reach the web
+application.
+
+## How to test the application
+
+### Through the swagger UI
+
+The application exposes a swagger UI, which can be accessed at `http://localhost:8080/swagger-ui/index.html`
+
+The application provides 4 endpoints:
+
+- `GET /api/v1/customers`: returns the list of all customers: extra endpoint build to test the UI application
+- `GET /api/v1/customers/{id}`: returns the customer with the given id
+- `POST /api/v1/customers`: creates a new customer: extra endpoint build to test the UI application
+- `POST /api/v1/customers/{id}/accounts`: creates a new account (with initial amount) for the customer with the given id
+
+### Through the Angular application
+
+The Angular application provides a simple UI to test the application.
+The application usage is pretty straightforward:
+
+- Create customers through the `Create a new customer` button. Will display a popup to enter the customer information
+- Select the current customer from the table. Once selected, the row will be highlighted in purple.
+- Create an account for the selected customer through the `Create a new account` button. Will display a popup to enter
+  the account information
+- Select the current account from the table. Once selected, the row will be highlighted in blue.
+- Read the table of transactions for the selected account.
