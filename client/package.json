@@ -4,10 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 127.0.0.1 --configuration development",
-    "build": "ng build",
+    "build:prod": "ng build --configuration production",
+    "postbuild:prod": "node ./post-build.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "ci": "npm run lint && npm run build:prod"
   },
   "private": true,
   "dependencies": {
@@ -43,6 +45,7 @@
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
+    "fs-extra": "^11.1.1",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
