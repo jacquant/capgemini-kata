@@ -72,14 +72,14 @@ public class CustomerServiceTest {
         // Arrange
         Long customerId = 1L;
         Customer customer = new Customer();
-        when(customerRepository.findById(customerId)).thenReturn(java.util.Optional.of(customer));
+        when(customerRepository.findCustomerAndFetchAccountsAndTransactions(customerId)).thenReturn(java.util.Optional.of(customer));
 
         // Act
         CustomerDto result = customerService.getCustomer(customerId);
 
         // Assert
         assertNotNull(result);
-        verify(customerRepository, times(1)).findById(customerId);
+        verify(customerRepository, times(1)).findCustomerAndFetchAccountsAndTransactions(customerId);
     }
 
     @Test
@@ -109,7 +109,7 @@ public class CustomerServiceTest {
         BigDecimal initialAmount = BigDecimal.TEN;
         Customer customer = new Customer();
         Account account = new Account();
-        when(customerRepository.findById(customerId)).thenReturn(java.util.Optional.of(customer));
+        when(customerRepository.findCustomerAndFetchAccountsAndTransactions(customerId)).thenReturn(java.util.Optional.of(customer));
         when(accountService.createAccount(initialAmount)).thenReturn(account);
 
         // Act
@@ -117,7 +117,7 @@ public class CustomerServiceTest {
 
         // Assert
         assertNotNull(result);
-        verify(customerRepository, times(1)).findById(customerId);
+        verify(customerRepository, times(1)).findCustomerAndFetchAccountsAndTransactions(customerId);
         verify(accountService, times(1)).createAccount(initialAmount);
     }
 }

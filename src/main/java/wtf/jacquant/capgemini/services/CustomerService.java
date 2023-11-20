@@ -35,7 +35,7 @@ public class CustomerService {
     }
 
     private Customer getCustomerById(final Long customerId) {
-        return customerRepository.findById(customerId).orElseThrow(() -> new CustomerNotFoundException(customerId));
+        return customerRepository.findCustomerAndFetchAccountsAndTransactions(customerId).orElseThrow(() -> new CustomerNotFoundException(customerId));
     }
 
     public CustomerDto createCustomer(final String firstName, final String lastName) {
