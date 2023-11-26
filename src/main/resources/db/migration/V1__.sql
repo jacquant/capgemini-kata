@@ -7,7 +7,7 @@ CREATE SEQUENCE transaction_seq START WITH 1 INCREMENT BY 1;
 CREATE TABLE account
 (
     id          BIGINT        NOT NULL,
-    amount      DECIMAL(5, 3) NOT NULL,
+    amount      DECIMAL(15, 3) NOT NULL,
     customer_id BIGINT,
     CONSTRAINT pk_account PRIMARY KEY (id)
 );
@@ -26,7 +26,7 @@ CREATE TABLE transaction
     transaction_type VARCHAR(31),
     target_id        BIGINT,
     source_id        BIGINT,
-    amount           DECIMAL(5, 3) NOT NULL,
+    amount           DECIMAL(12, 3) NOT NULL,
     created_date     TIMESTAMP     NOT NULL,
     CONSTRAINT pk_transaction PRIMARY KEY (id)
 );

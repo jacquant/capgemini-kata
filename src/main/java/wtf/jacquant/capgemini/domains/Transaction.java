@@ -34,7 +34,7 @@ public class Transaction {
     @JoinColumn(name = "source_id")
     private Account source;
 
-    @Column(name = "amount", nullable = false, precision = 5, scale = 3)
+    @Column(name = "amount", nullable = false, precision = 12, scale = 3)
     private BigDecimal amount;
 
     @CreatedDate

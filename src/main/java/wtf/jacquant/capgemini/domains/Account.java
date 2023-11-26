@@ -20,7 +20,7 @@ public class Account {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(nullable = false, precision = 5, scale = 3)
+    @Column(nullable = false, precision = 15, scale = 3)
     private BigDecimal amount;
 
     @ManyToOne(fetch = FetchType.LAZY)
